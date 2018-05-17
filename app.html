@@ -1,0 +1,60 @@
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+<pre>
+# Given your birthday and the current date, calculate your age
+# in days. Compensate for leap days. Assume that the birthday
+# and current date are correct dates (and no time travel).
+# Simply put, if you were born 1 Jan 2012 and todays date is
+# 2 Jan 2012 you are 1 day old.
+
+# IMPORTANT: You don't need to solve the problem yet!
+# Just brainstorm ways you might approach it!
+
+daysOfMonths = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+def isLeapYear(year):
+    if year%4 == 0:
+        if year%100 == 0:
+            if year%400 == 0:
+                 leap = 1
+            else:
+                 leap = -1
+        else:
+             leap = -1
+    else:
+         leap = -1
+    return leap
+
+    ##
+    # Your code here. Return True or False
+    # Pseudo code for this algorithm is found at
+    # http://en.wikipedia.org/wiki/Leap_year#Algorithm
+    ##
+
+def daysBetweenDates(y1, m1, d1, y2, m2, d2):
+    dayall = 0
+    while y1 != y2+1:
+
+        if isLeapYear(y1) == -1:
+            y=365
+        else:
+            y=366
+        day = y
+        y1 = y1+1
+        dayall=dayall+day
+    if isLeapYear(1993) == -1:
+        headdy = daysOfMonths[0]+daysOfMonths[1]+1+daysOfMonths[2]+daysOfMonths[3]+daysOfMonths[4]+d1
+    else:
+        headdy  = daysOfMonths[0]+daysOfMonths[1]+daysOfMonths[2]+daysOfMonths[3]+daysOfMonths[4]+d1
+    endday = daysOfMonths[2]+daysOfMonths[3]+daysOfMonths[4]+daysOfMonths[5]+daysOfMonths[6]+daysOfMonths[7]+daysOfMonths[8]+daysOfMonths[9]+daysOfMonths[10]+daysOfMonths[11]-d2
+    return dayall-headdy-endday
+    #return dayall
+    #return endday
+    #return headdy
+print daysBetweenDates(1993, 6, 28, 2018, 3, 7)
+</pre>
+</body>
+</html>
